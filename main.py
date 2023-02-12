@@ -4,7 +4,8 @@ from conf import URL
 
 def get_rate(url):
     response = requests.get(url)
-    print(response.status_code)
+    data = response.json()
+    print(data)
 
 
 if __name__ == '__main__':
