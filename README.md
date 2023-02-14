@@ -1,0 +1,3 @@
+# Daily-Exchange-Rate
+### This script is a simple example of getting API from currency sites and their price and value against each other ...
+
