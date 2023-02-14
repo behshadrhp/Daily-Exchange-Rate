@@ -1,4 +1,5 @@
 import requests
+import json
 from conf import URL
 
 
@@ -15,6 +16,11 @@ class DailyExchangeRate:
         except:
             return 'We encountered some problems while performing the operation. Please check your internet connection and try again'
 
+    def archive(base, filename, rate):
+        with open(f'archive/{base}-{filename}.json', 'w') as file:
+            file.write(json.dumps(rate))
+
 
 if __name__ == '__main__':
-    print(DailyExchangeRate.get_rate(URL))
+    rate = DailyExchangeRate.get_rate(URL)
+    archive = DailyExchangeRate.archive(rate['base'], rate['date'], rate['rates'])
