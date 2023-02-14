@@ -1,5 +1,6 @@
 import requests
 import json
+import sys
 from conf import URL
 
 
@@ -10,6 +11,9 @@ class DailyExchangeRate:
             response = requests.get(url)
             if response.status_code == 200:
                 data = response.json()
+                if data['success'] != True:
+                    return 'The operation was not successful. Please try again ...'
+                    sys.exit()
                 return data
             else:
                 return 'The operation was not successful. Please try again ...'
