@@ -1,7 +1,7 @@
 import requests
 import json
 import sys
-from conf import URL
+from conf import URL, RULES
 
 
 class DailyExchangeRate:
@@ -27,4 +27,6 @@ class DailyExchangeRate:
 
 if __name__ == '__main__':
     rate = DailyExchangeRate.get_rate(URL)
-    archive = DailyExchangeRate.archive(rate['base'], rate['date'], rate['rates'])
+    
+    if RULES['archive'] == True:
+        archive = DailyExchangeRate.archive(rate['base'], rate['date'], rate['rates'])
